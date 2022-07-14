@@ -1,0 +1,67 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/mkkhell/RiderProjects/FoodDeliveryKG/FoodDeliveryKG/FoodDeliveryKG.csproj": {}
+  },
+  "projects": {
+    "/home/mkkhell/RiderProjects/FoodDeliveryKG/FoodDeliveryKG/FoodDeliveryKG.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/mkkhell/RiderProjects/FoodDeliveryKG/FoodDeliveryKG/FoodDeliveryKG.csproj",
+        "projectName": "FoodDeliveryKG",
+        "projectPath": "/home/mkkhell/RiderProjects/FoodDeliveryKG/FoodDeliveryKG/FoodDeliveryKG.csproj",
+        "packagesPath": "/home/mkkhell/.nuget/packages/",
+        "outputPath": "/home/mkkhell/RiderProjects/FoodDeliveryKG/FoodDeliveryKG/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/mkkhell/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net60"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp6.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp6.0": {
+          "dependencies": {
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/6.0.105/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
