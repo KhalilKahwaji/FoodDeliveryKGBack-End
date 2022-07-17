@@ -1,0 +1,7 @@
+/home/mkkhell/RiderProjects/FoodDeliveryKGBack/FoodDeliveryKG/FoodDeliveryKG/obj/Debug/net48/FoodDeliveryKG.csproj.AssemblyReference.cache
+/home/mkkhell/RiderProjects/FoodDeliveryKGBack/FoodDeliveryKG/FoodDeliveryKG/obj/Debug/net48/FoodDeliveryKG.csproj.SuggestedBindingRedirects.cache
+/home/mkkhell/RiderProjects/FoodDeliveryKGBack/FoodDeliveryKG/FoodDeliveryKG/obj/Debug/net48/FoodDeliveryKG.exe.config
+/home/mkkhell/RiderProjects/FoodDeliveryKGBack/FoodDeliveryKG/FoodDeliveryKG/obj/Debug/net48/FoodDeliveryKG.GeneratedMSBuildEditorConfig.editorconfig
+/home/mkkhell/RiderProjects/FoodDeliveryKGBack/FoodDeliveryKG/FoodDeliveryKG/obj/Debug/net48/FoodDeliveryKG.AssemblyInfoInputs.cache
+/home/mkkhell/RiderProjects/FoodDeliveryKGBack/FoodDeliveryKG/FoodDeliveryKG/obj/Debug/net48/FoodDeliveryKG.AssemblyInfo.cs
+/home/mkkhell/RiderProjects/FoodDeliveryKGBack/FoodDeliveryKG/FoodDeliveryKG/obj/Debug/net48/FoodDeliveryKG.csproj.CoreCompileInputs.cache

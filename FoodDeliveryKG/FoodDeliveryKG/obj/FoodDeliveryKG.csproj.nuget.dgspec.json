@@ -1,29 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/home/mkkhell/RiderProjects/FoodDeliveryKG/FoodDeliveryKG/FoodDeliveryKG.csproj": {}
+    "/home/mkkhell/RiderProjects/FoodDeliveryKGBack/FoodDeliveryKG/FoodDeliveryKG/FoodDeliveryKG.csproj": {}
   },
   "projects": {
-    "/home/mkkhell/RiderProjects/FoodDeliveryKG/FoodDeliveryKG/FoodDeliveryKG.csproj": {
+    "/home/mkkhell/RiderProjects/FoodDeliveryKGBack/FoodDeliveryKG/FoodDeliveryKG/FoodDeliveryKG.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/mkkhell/RiderProjects/FoodDeliveryKG/FoodDeliveryKG/FoodDeliveryKG.csproj",
+        "projectUniqueName": "/home/mkkhell/RiderProjects/FoodDeliveryKGBack/FoodDeliveryKG/FoodDeliveryKG/FoodDeliveryKG.csproj",
         "projectName": "FoodDeliveryKG",
-        "projectPath": "/home/mkkhell/RiderProjects/FoodDeliveryKG/FoodDeliveryKG/FoodDeliveryKG.csproj",
-        "packagesPath": "/home/mkkhell/.nuget/packages/",
-        "outputPath": "/home/mkkhell/RiderProjects/FoodDeliveryKG/FoodDeliveryKG/obj/",
+        "projectPath": "/home/mkkhell/RiderProjects/FoodDeliveryKGBack/FoodDeliveryKG/FoodDeliveryKG/FoodDeliveryKG.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/home/mkkhell/RiderProjects/FoodDeliveryKGBack/FoodDeliveryKG/FoodDeliveryKG/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/mkkhell/.config/NuGet/NuGet.Config"
+          "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net60"
+          "net6.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp6.0": {
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -34,11 +35,26 @@
         }
       },
       "frameworks": {
-        "netcoreapp6.0": {
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.2, )",
+              "autoReferenced": true
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.2.3, )"
+              "version": "[6.3.1, )"
             }
           },
           "imports": [
