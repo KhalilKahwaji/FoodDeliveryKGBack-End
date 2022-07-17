@@ -22,31 +22,42 @@ namespace FoodDeliveryKG.Controllers
         
         
         [HttpGet]
-        public async Task<IEnumerable<User>> Get()
+        public async Task<IEnumerable<Restaurant>> Get()
         {
-            return await _context.users.ToListAsync();
+            return await _context.restaurants.ToListAsync();
         }
 
 
         [HttpGet("{username}/{password}")]
         public async Task<IActionResult> GetByLogin(string username, string password)
         {
-            var user = await _context.users.FindAsync(username, password);
-            return user.userid == null ? NotFound() : Ok(user.userid);
+            var restaurant = await _context.restaurants.FindAsync(username, password);
+            return restaurant.restaurantid == null ? NotFound() : Ok(restaurant);
         }
 
+        
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetByLogin(int id)
+        {
+            var restaurant = await _context.restaurants.FindAsync(id);
+            return restaurant.restaurantid == null ? NotFound() : Ok(restaurant);
+        }
+        
+        
         [HttpPost]
         public async Task<IActionResult> Create(Restaurant restaurant)
         {
             await _context.restaurants.AddAsync(new Restaurant()
             {
-                //userid = restaurant.userid,
+               
                 name = restaurant.name,
                 username = restaurant.username,
-                dateCreated = DateTime.UtcNow,
+                datecreated = DateTime.UtcNow,
                 password = restaurant.password,
-                //menuId = restaurant.menuId
-                
+                address= restaurant.address,
+                phonenumber = restaurant.phonenumber,
+                categoryid = restaurant.categoryid
+
 
             });
 

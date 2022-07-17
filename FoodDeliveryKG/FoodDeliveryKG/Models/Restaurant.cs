@@ -5,22 +5,21 @@ namespace FoodDeliveryKG
 {
     public class Restaurant
     {
-        [Required] public int id { get; set; }
+        [Required] public int restaurantid { get; set; }
 
         public string name { get; set; }
 
         public string username { get; set; }
-
         
-        public DateTime dateCreated { get; set; }
+        public DateTime datecreated { get; set; }
 
         public string password { get; set; }
-        
-        //public int menuId { get; set; }//????????//
 
         public string address { get; set; }
 
-        public int phoneNumber;
+        public int phonenumber { get; set; }
+
+        public int categoryid { get; set; }
 
     }
 }

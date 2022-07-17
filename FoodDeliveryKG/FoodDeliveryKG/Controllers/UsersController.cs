@@ -58,5 +58,20 @@ namespace FoodDeliveryKG.Controllers
 
             return Ok();
         }
+        
+        
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetByLogin(int id)
+        {
+            if (id != null)
+            {
+                var user = await _context.users.FindAsync(id);
+                return user.userid == null ? NotFound() : Ok(user);
+            }
+
+            return NotFound();
+
+        }
+        
     }
 }

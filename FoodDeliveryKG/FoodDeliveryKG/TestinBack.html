@@ -5,20 +5,24 @@
     <title>Test</title>
 </head>
 <body>
-<h5>Start Ad-Placer!</h5>
+<h1>Start Ad-Placer!</h1>
 <input type="submit" value="Start" onclick="submit()">
 
 <script type="text/javascript">
     function submit() {
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                alert(xhr.response);
+            if (xhr.readyState === 3) {
+               var myObj= JSON.parse(xhr.responseText);
+               
+                alert(myObj[0].categoryname);
             }
         }
-        xhr.open('get', 'http://localhost:5236/swagger/index.html/api/Users', true);
+        xhr.open('get', 'http://localhost:5236/api/RestaurantCategory', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
         xhr.send();
+      
+        
     }
 
 </script>
