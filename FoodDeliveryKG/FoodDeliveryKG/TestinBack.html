@@ -4,23 +4,30 @@
     <meta charset="UTF-8">
     <title>Test</title>
 </head>
-<body>
+<body bgcolor="#8a2be2">
 <h1>Start Ad-Placer!</h1>
 <input type="submit" value="Start" onclick="submit()">
 
 <script type="text/javascript">
     function submit() {
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 3) {
-               var myObj= JSON.parse(xhr.responseText);
-               
-                alert(myObj[0].categoryname);
-            }
-        }
-        xhr.open('get', 'http://localhost:5236/api/RestaurantCategory', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-        xhr.send();
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:5236/api/Users");
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onload = () => console.log(xhr.responseText);
+
+
+        let data = `{  
+  "fname": "geogeo1",
+  "lname": "appa",
+  "username": "kaykay001234",
+  "password": "123",
+  "phoneNumber": 90,
+  "address": "rmeich"
+}`;
+        alert(data);
+        xhr.send(data);
       
         
     }

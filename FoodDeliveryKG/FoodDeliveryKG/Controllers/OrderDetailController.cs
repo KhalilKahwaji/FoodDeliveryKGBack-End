@@ -39,8 +39,8 @@ namespace FoodDeliveryKG.Controllers
                 var tmp2 = await _context.users.FindAsync(tmp.userid);
                 fo.user = tmp2.fname + "  " + tmp2.lname;
                 fo.restaurant = " ";
-                fo.foodcategory = " ";
-                */
+                fo.foodcategory = " ";*/
+                
                 return orderdetail.orderdetailid == null ? NotFound() : Ok(orderdetail);
             }
 
