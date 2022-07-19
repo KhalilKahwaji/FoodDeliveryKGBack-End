@@ -28,14 +28,25 @@ namespace FoodDeliveryKG.Controllers
         }
 
 
+        // [HttpGet("{username}/{password}")]
+        // public async Task<IActionResult> GetByLogin(string username, string password)
+        // {
+        //     var restaurant = await _context.restaurants.FindAsync(username, password);
+        //     return restaurant.restaurantid == null ? NotFound() : Ok(restaurant);
+        // }
+
         [HttpGet("{username}/{password}")]
         public async Task<IActionResult> GetByLogin(string username, string password)
         {
-            var restaurant = await _context.restaurants.FindAsync(username, password);
-            return restaurant.restaurantid == null ? NotFound() : Ok(restaurant);
-        }
+            Object userToAuth = (
+                from restaurants in _context.restaurants
+                where restaurants.username == username
+                where restaurants.password == password
+                select restaurants
+            );
 
-        
+            return Ok(userToAuth);
+        }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByLogin(int id)
         {

@@ -9,11 +9,11 @@ namespace FoodDeliveryKG.Models;
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.UseSerialColumns();
-            modelBuilder.Entity<User>().HasKey(u => new
+            /*modelBuilder.Entity<User>().HasKey(u => new
             {
                 u.username,
-                u.password,
-            });
+                u.password
+            });*/
             
             modelBuilder.Entity<User>().HasKey(u => new
             {

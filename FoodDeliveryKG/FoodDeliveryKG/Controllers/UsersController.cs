@@ -34,13 +34,81 @@ namespace FoodDeliveryKG.Controllers
         [HttpGet("{username}/{password}")]
         public async Task<IActionResult> GetByLogin(string username, string password)
         {
-            var user = await _context.users.FindAsync(username, password);
-            return user.userid == null ? NotFound() : Ok(user.userid);
+            Object userToAuth = (
+                from users in _context.users
+                where users.username == username
+                where users.password == password
+                select users
+            );
+
+
+
+            return Ok(userToAuth);
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(User user)
         {
+            string newusername="";
+           
+            bool exists = false;
+            bool samephone = false;
+            
+            
+            foreach (User u in _context.users)
+            {
+                if (u.username == user.username)
+                {
+                    exists = true;
+                   
+                }
+
+                if (u.phoneNumber == user.phoneNumber)
+                {
+                    samephone = true;
+                }
+            }
+
+            if (samephone)
+            {
+                return NotFound("Phone number already registered to an account. Please use a different one.");
+
+            }
+           
+            bool passedbyhere = false;
+            
+            if (exists)
+            {
+                for (int i = 100; i < 10000; i++)
+                {
+
+                    Random rnd = new Random();
+                    int num = rnd.Next(1000);
+
+
+                    newusername = user.username + num.ToString();
+                    
+                    foreach (User u in _context.users)
+                    {
+                     
+                        if (u.username == newusername)
+                        {
+                            passedbyhere = true;
+                            
+                            break;
+                        }
+                    }
+
+                    if (!passedbyhere)
+                    {
+                        break;
+                    }
+                }
+                return NotFound("Username already exists! Try "+ newusername);
+
+            }
+            
+                
              await _context.users.AddAsync(new User
             {
                 username = user.username,
@@ -53,10 +121,11 @@ namespace FoodDeliveryKG.Controllers
                 
 
             });
-
+            
             await _context.SaveChangesAsync();
-
-            return Ok();
+           
+            return Ok(user);
+            
         }
         
         
@@ -65,7 +134,8 @@ namespace FoodDeliveryKG.Controllers
         {
             if (id != null)
             {
-                var user = await _context.users.FindAsync(id);
+                var user = _context.users.Find(id);
+                
                 return user.userid == null ? NotFound() : Ok(user);
             }
 
@@ -73,5 +143,22 @@ namespace FoodDeliveryKG.Controllers
 
         }
         
+        /*
+        [HttpGet("LOG{uname}")]
+        public async Task<IActionResult> Get(string uname)
+        {
+            foreach(User u in _context.users)
+            {
+                if (u.username == uname)
+                {
+                    return Ok(u.password);
+                }
+            }
+
+            
+
+            return NotFound();
+
+        }*/
     }
 }
