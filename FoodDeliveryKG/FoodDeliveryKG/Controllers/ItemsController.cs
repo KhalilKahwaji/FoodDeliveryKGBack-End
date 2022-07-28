@@ -44,6 +44,31 @@ namespace FoodDeliveryKG.Controllers
 
         }
         
+        [HttpGet("GetMenu/{resid}")]
+        public async Task<IActionResult> GetMenu(int resid)
+        {
+            Array arr = (
+                from items in _context.items
+                where items.restaurantid == resid
+                select items
+            ).ToArray();
+
+           return Ok(arr);
+
+        }
+        
+        [HttpGet("GetMenuFiltered/{resid}/{itemCat}")]
+        public async Task<IActionResult> GetMenuFiltered(int resid, int itemCat)
+        {
+            Array arr = (
+                from items in _context.items
+                where (items.restaurantid == resid) && (items.categoryid==itemCat)
+                select items
+            ).ToArray();
+            return Ok(arr);
+
+        }
+
         
         [HttpPost]
         public async Task<IActionResult> Create(Items item)

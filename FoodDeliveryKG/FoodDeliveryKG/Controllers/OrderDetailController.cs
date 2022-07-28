@@ -48,14 +48,54 @@ namespace FoodDeliveryKG.Controllers
 
         }
         
+      
+        //   
+        // [HttpPost]
+        // public async Task<IActionResult> Create(OrderDetail orderdetail)
+        // {
+        //     await _context.orderdetail.AddAsync(new OrderDetail
+        //     {
+        //
+        //         orderid = orderdetail.orderid,
+        //         itemid = orderdetail.itemid,
+        //         quantity = orderdetail.quantity,
+        //         price = orderdetail.price
+        //
+        //     });
+        //
+        //     await _context.SaveChangesAsync();
+        //
+        //     return Ok();
+        // }
+
         
         [HttpPost]
-        public async Task<IActionResult> Create(OrderDetail orderdetail)
+        public async Task<IActionResult> CreateFullOrder(FullOrderDetails orderdetail)
         {
+            int myOrderID=-1;
+            await _context.orders.AddAsync(new Orders
+            {
+               
+                statusid = 1,
+                userid = orderdetail.userid,
+                restaurantid = orderdetail.restaurantid,
+                dateoforder = DateTime.UtcNow
+
+            });
+
+            _context.SaveChanges();
+            foreach (Orders o in _context.orders)
+            {
+                if (myOrderID < o.orderid)
+                {
+                    myOrderID = o.orderid;
+                }
+            }
             await _context.orderdetail.AddAsync(new OrderDetail
             {
 
-                orderid = orderdetail.orderid,
+                
+                orderid = myOrderID,
                 itemid = orderdetail.itemid,
                 quantity = orderdetail.quantity,
                 price = orderdetail.price
