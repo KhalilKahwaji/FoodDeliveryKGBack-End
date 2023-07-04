@@ -26,7 +26,7 @@ namespace FoodDeliveryKG.Controllers
         [HttpGet]
         public async Task<IEnumerable<User>> Get()
         {
-            return await _context.users.ToListAsync();
+            return await _context.user.ToListAsync();
             
         }
 
@@ -35,7 +35,7 @@ namespace FoodDeliveryKG.Controllers
         public async Task<IActionResult> GetByLogin(string username, string password)
         {
             Object userToAuth = (
-                from users in _context.users
+                from users in _context.user
                 where users.username == username
                 where users.password == password
                 select users
@@ -55,7 +55,7 @@ namespace FoodDeliveryKG.Controllers
             bool samephone = false;
             
             
-            foreach (User u in _context.users)
+            foreach (User u in _context.user)
             {
                 if (u.username == user.username)
                 {
@@ -88,7 +88,7 @@ namespace FoodDeliveryKG.Controllers
 
                     newusername = user.username + num.ToString();
                     
-                    foreach (User u in _context.users)
+                    foreach (User u in _context.user)
                     {
                      
                         if (u.username == newusername)
@@ -109,7 +109,7 @@ namespace FoodDeliveryKG.Controllers
             }
             
                 
-             await _context.users.AddAsync(new User
+             await _context.user.AddAsync(new User
             {
                 username = user.username,
                 password = user.password,
@@ -134,7 +134,7 @@ namespace FoodDeliveryKG.Controllers
         {
             if (id != null)
             {
-                var user = _context.users.Find(id);
+                var user = _context.user.Find(id);
                 
                 return user.userid == null ? NotFound() : Ok(user);
             }

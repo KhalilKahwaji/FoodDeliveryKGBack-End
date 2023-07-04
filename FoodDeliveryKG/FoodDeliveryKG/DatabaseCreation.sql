@@ -21,7 +21,7 @@ CREATE TABLE Restaurant
     phoneNumber int          NOT NULL UNIQUE,
     address     varchar(512) NOT NULL,
     categoryid  serial          NOT NULL,
-    FOREIGN KEY (categoryid) REFERENCES restaurantCategory(categoryid),
+    FOREIGN KEY (categoryid) REFERENCES restaurantCategory(categoryid)
 )
 
 CREATE TABLE Item
@@ -67,7 +67,7 @@ CREATE TABLE Order
     restaurantid    serial not null,
     dateOfOrder     date  not null,
     FOREIGN KEY (restaurantid) REFERENCES Restaurant(restaurantid),
-    FOREIGN KEY (userid) REFERENCES users(userid),
+    FOREIGN KEY (userid) REFERENCES user(userid),
     FOREIGN KEY (statusid) REFERENCES orderstatus(statusid)
 
 )

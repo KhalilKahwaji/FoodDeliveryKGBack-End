@@ -25,7 +25,7 @@ namespace FoodDeliveryKG.Controllers
         [HttpGet]
         public async Task<IEnumerable<Restaurant>> Get()
         {
-            return await _context.restaurants.ToListAsync();
+            return await _context.restaurant.ToListAsync();
         }
 
 
@@ -40,7 +40,7 @@ namespace FoodDeliveryKG.Controllers
         public async Task<IActionResult> GetByLogin(string username, string password)
         {
             Object userToAuth = (
-                from restaurants in _context.restaurants
+                from restaurants in _context.restaurant
                 where restaurants.username == username
                 where restaurants.password == password
                 select restaurants
@@ -57,7 +57,7 @@ namespace FoodDeliveryKG.Controllers
             Restaurant res = new Restaurant();
             string[] usernames;
             //get the restaurant
-            foreach (Restaurant r in _context.restaurants)
+            foreach (Restaurant r in _context.restaurant)
             {
                 if (r.username == username)
                 {
@@ -69,7 +69,7 @@ namespace FoodDeliveryKG.Controllers
             List<Object> usersStrings= new List<Object>();
             int ind = 0;
             Array userToAuth = (
-                from orders in _context.orders
+                from orders in _context.order
                 where orders.restaurantid == res.restaurantid
                 select orders.userid
             ).ToArray();
@@ -93,7 +93,7 @@ namespace FoodDeliveryKG.Controllers
                         where users.userid == curid
                         select users
                     );*/
-                    foreach (User u in _context.users)
+                    foreach (User u in _context.user)
                     {
                         if (u.userid == curid)
                         {
@@ -117,7 +117,7 @@ namespace FoodDeliveryKG.Controllers
         public async Task<IActionResult> Getitems(int id)
         {
             Array itemsarr = (
-                from items in _context.items
+                from items in _context.item
                 where items.restaurantid == id
                 select items
             ).ToArray();
@@ -141,7 +141,7 @@ namespace FoodDeliveryKG.Controllers
                 }
             }
             Array restArr = (
-                from restaurants in _context.restaurants
+                from restaurants in _context.restaurant
                 where restaurants.categoryid == catId
                 select restaurants
             ).ToArray();
@@ -157,7 +157,7 @@ namespace FoodDeliveryKG.Controllers
         {
             int catId=0;
             List<Restaurant> rests = new List<Restaurant>();
-            foreach (Restaurant r in _context.restaurants)
+            foreach (Restaurant r in _context.restaurant)
             {
                 if (r.name.ToLower().Contains(str.ToLower()))
                 {
@@ -177,11 +177,11 @@ namespace FoodDeliveryKG.Controllers
 
 
             var itt = (
-                from items in _context.items
+                from items in _context.item
                 where items.itemid == id
                 select items
             );
-                    _context.items.RemoveRange(itt);
+                    _context.item.RemoveRange(itt);
                     _context.SaveChanges();
 
             return Ok("item deleted.");
@@ -191,7 +191,7 @@ namespace FoodDeliveryKG.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByLogin(int id)
         {
-            var restaurant = await _context.restaurants.FindAsync(id);
+            var restaurant = await _context.restaurant.FindAsync(id);
             return restaurant.restaurantid == null ? NotFound() : Ok(restaurant);
         }
 
@@ -205,7 +205,7 @@ namespace FoodDeliveryKG.Controllers
             bool samephone = false;
             
             
-            foreach (Restaurant u in _context.restaurants)
+            foreach (Restaurant u in _context.restaurant)
             {
                 if (u.username == restaurant.username)
                 {
@@ -230,7 +230,7 @@ namespace FoodDeliveryKG.Controllers
 
             }
 
-            await _context.restaurants.AddAsync(new Restaurant()
+            await _context.restaurant.AddAsync(new Restaurant()
             {
                 name = restaurant.name,
                 username = restaurant.username,

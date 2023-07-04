@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
     builder.Services.AddSwaggerGen();
    
 builder.Services.AddDbContext<FoodDeliveryKGContext>(
-    o => o.UseNpgsql(builder.Configuration.GetConnectionString("foodyprojectdb"))
+    o => o.UseNpgsql(builder.Configuration.GetConnectionString("fooddeliverykg"))
 );
 Console.WriteLine();
 //services cors

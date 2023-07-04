@@ -73,7 +73,7 @@ namespace FoodDeliveryKG.Controllers
         public async Task<IActionResult> CreateFullOrder(FullOrderDetails orderdetail)
         {
             int myOrderID=-1;
-            await _context.orders.AddAsync(new Orders
+            await _context.order.AddAsync(new Orders
             {
                
                 statusid = 1,
@@ -84,7 +84,7 @@ namespace FoodDeliveryKG.Controllers
             });
 
             _context.SaveChanges();
-            foreach (Orders o in _context.orders)
+            foreach (Orders o in _context.order)
             {
                 if (myOrderID < o.orderid)
                 {

@@ -27,7 +27,7 @@ namespace FoodDeliveryKG.Controllers
         public async Task<IEnumerable<Items>> Get()
         {
           
-            return await _context.items.ToListAsync();
+            return await _context.item.ToListAsync();
         }
         
         
@@ -36,7 +36,7 @@ namespace FoodDeliveryKG.Controllers
         {
             if (id != null)
             {
-                var items = await _context.items.FindAsync(id);
+                var items = await _context.item.FindAsync(id);
                 return items.itemid == null ? NotFound() : Ok(items);
             }
 
@@ -48,7 +48,7 @@ namespace FoodDeliveryKG.Controllers
         public async Task<IActionResult> GetMenu(int resid)
         {
             Array arr = (
-                from items in _context.items
+                from items in _context.item
                 where items.restaurantid == resid
                 select items
             ).ToArray();
@@ -61,7 +61,7 @@ namespace FoodDeliveryKG.Controllers
         public async Task<IActionResult> GetMenuFiltered(int resid, int itemCat)
         {
             Array arr = (
-                from items in _context.items
+                from items in _context.item
                 where (items.restaurantid == resid) && (items.categoryid==itemCat)
                 select items
             ).ToArray();
@@ -73,7 +73,7 @@ namespace FoodDeliveryKG.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Items item)
         {
-            await _context.items.AddAsync(new Items
+            await _context.item.AddAsync(new Items
             {
 
                 name = item.name,

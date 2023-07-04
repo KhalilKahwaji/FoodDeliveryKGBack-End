@@ -25,7 +25,7 @@ namespace FoodDeliveryKG.Controllers
         public async Task<IEnumerable<Orders>> Get()
         {
           
-            return await _context.orders.ToListAsync();
+            return await _context.order.ToListAsync();
         }
         
         
@@ -34,7 +34,7 @@ namespace FoodDeliveryKG.Controllers
         {
             if (id != null)
             {
-                var orders = await _context.orders.FindAsync(id);
+                var orders = await _context.order.FindAsync(id);
                 return orders.orderid == null ? NotFound() : Ok(orders);
             }
 
@@ -51,7 +51,7 @@ namespace FoodDeliveryKG.Controllers
                 select orders
             );*/
             
-            Orders tst= (from p in _context.orders
+            Orders tst= (from p in _context.order
                     where p.orderid == id select p).SingleOrDefault();
             tst.statusid = newStatus;
             _context.SaveChanges();
@@ -75,7 +75,7 @@ namespace FoodDeliveryKG.Controllers
         public async Task<IActionResult> GetOrdersToRest(int id)
         {
             Array ordersToRes = (
-                from orders in _context.orders
+                from orders in _context.order
                 where orders.restaurantid == id
                 select orders
             ).ToArray<Orders>();
@@ -115,7 +115,7 @@ namespace FoodDeliveryKG.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Orders order)
         {
-            await _context.orders.AddAsync(new Orders
+            await _context.order.AddAsync(new Orders
             {
                 //id automatically
                 statusid = 1,

@@ -65,8 +65,8 @@ namespace FoodDeliveryKG.Models;
 
         public FoodDeliveryKGContext(DbContextOptions<FoodDeliveryKGContext> options) : base(options) {}
 
-        public DbSet<User> users { get; set; }
-        public DbSet<Restaurant> restaurants { get; set; }
+        public DbSet<User> user { get; set; }
+        public DbSet<Restaurant> restaurant { get; set; }
         
         public DbSet<RestaurantCategory> restaurantcategory { get; set; }
         
@@ -74,9 +74,9 @@ namespace FoodDeliveryKG.Models;
         
         public DbSet<OrderStatus>orderstatus { get; set; }
         
-        public DbSet<Items>items { get; set; }
+        public DbSet<Items>item { get; set; }
         
-        public DbSet<Orders>orders { get; set; }
+        public DbSet<Orders>order { get; set; }
 
         public DbSet<OrderDetail>orderdetail { get; set; }
     }
